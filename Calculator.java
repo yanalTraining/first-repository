@@ -9,13 +9,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import traing1.Node;
-import traing1.Stack;
 
 public class Calculator extends Application {
-
-	String equation;
-
+	/*
+	 * this is simple calculator class
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		launch(args);
@@ -26,10 +24,14 @@ public class Calculator extends Application {
 	public void start(Stage stage) throws Exception {
 
 		// TODO Auto-generated method stub
-		BorderPane bPane = new BorderPane();
-		bPane.setStyle("-fx-background-color: linear-gradient(#4169E1  , #4169E1);");
-		TextArea text = new TextArea();
-		text.setMaxSize(300, 60);
+		BorderPane bPane = new BorderPane();// this is main border pane
+		bPane.setStyle("-fx-background-color: linear-gradient(#4169E1  , #4169E1);");// change
+																						// back
+																						// ground
+																						// for
+																						// border
+		TextArea text = new TextArea();// the area show digit and equation
+		text.setMaxSize(300, 60);// set size for text area
 		Button num1 = new Button("1");
 		num1.setStyle(
 				" -fx-background-color: linear-gradient(#000080  , #000080);-fx-background-radius: 30;-fx-text-fill: white;-fx-font-weight: bold;");
@@ -96,24 +98,24 @@ public class Calculator extends Application {
 		equal.setStyle(
 				" -fx-background-color: linear-gradient(#1E90FF  , #1E90FF);-fx-background-radius: 30;-fx-text-fill: black;-fx-font-weight: bold;");
 
-		HBox firstHBox = new HBox(10);
-		HBox secondBox = new HBox(10);
-		HBox thirdHBox = new HBox(10);
-		HBox fourthHBox = new HBox(10);
-		HBox fifthHBox = new HBox(10);
-
+		HBox firstHBox = new HBox(10);// Hbox for *,/and+
+		HBox secondBox = new HBox(10);// hbox for 7,8 and 9
+		HBox thirdHBox = new HBox(10);// Hbox for 4,5and 6
+		HBox fourthHBox = new HBox(10);// hbox for 1,2 and3
+		HBox fifthHBox = new HBox(10);// hbox for -,0 and =
 		firstHBox.getChildren().addAll(by, div, plus);
 		secondBox.getChildren().addAll(num7, num8, num9);
 		thirdHBox.getChildren().addAll(num4, num5, num6);
 		fourthHBox.getChildren().addAll(num1, num2, num3);
 		fifthHBox.getChildren().addAll(sub, num0, equal);
 		VBox genericVBox = new VBox(10);
-		genericVBox.getChildren().addAll(firstHBox, secondBox, thirdHBox, fourthHBox, fifthHBox);
+		genericVBox.getChildren().addAll(firstHBox, secondBox, thirdHBox, fourthHBox, fifthHBox);// vBoxto
+																									// create
+																									// Number
+																									// plate
 		bPane.setCenter(genericVBox);
 		bPane.setTop(text);
-		bPane.setPadding(new Insets(10, 10, 10, 10));// bp.setPadding(new
-														// Insets(10, 20, 10,
-														// 20));
+		bPane.setPadding(new Insets(10, 10, 10, 10));
 		num1.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -233,19 +235,27 @@ public class Calculator extends Application {
 				// TODO Auto-generated method stub
 				String equation = text.getText();
 				text.clear();
-				text.appendText(opreation(equation));
+				text.appendText(operation(equation));// Operation method return
+														// string
 
 			}
 
 		});
 
 		Scene scene = new Scene(bPane, 310, 430);
-		stage.setTitle("yNOW");
+		stage.setTitle("calculator");
 		stage.setScene(scene);
 		stage.show();
 	}
 
-	private String opreation(String equation) {
+	private String operation(String equation) {
+
+		/*
+		 * this method take one variable as string and create 4 variable result
+		 * they have final result firstNum they have the digit before operator
+		 * second number the digit after operator Operator they have operator
+		 * value
+		 */
 
 		// TODO Auto-generated method stub
 		/*
@@ -269,24 +279,24 @@ public class Calculator extends Application {
 		int result = 0;
 		int firstNum = 0;
 		int secondNum = 0;
-		char opreater = 0;
+		char operator = 0;
 
 		for (int i = 0; i < equation.length(); i++) {
 			if (!Character.isDigit(equation.charAt(i))) {
-				opreater = equation.charAt(i);
+				operator = equation.charAt(i);
 			}
 		}
-		firstNum = Integer.parseInt(equation.substring(0, equation.indexOf(opreater)));
-		secondNum = Integer.parseInt(equation.substring(equation.indexOf(opreater) + 1));
-		if (opreater == '+') {// get svn
+		firstNum = Integer.parseInt(equation.substring(0, equation.indexOf(operator)));
+		secondNum = Integer.parseInt(equation.substring(equation.indexOf(operator) + 1));
+		if (operator == '+') {
 			result = firstNum + secondNum;
 			return result + "";
-		} else if (opreater == '-') {
+		} else if (operator == '-') {
 			result = firstNum - secondNum;
 			return result + "";
-		} else if (opreater == '*') {
+		} else if (operator == '*') {
 			return firstNum * secondNum + "";
-		} else if (opreater == '/') {
+		} else if (operator == '/') {
 			if (secondNum != 0) {
 				return firstNum / secondNum + "";
 			} else {
