@@ -98,8 +98,16 @@ public class Calculator extends Application {
 		equal.setMinSize(90, 60);
 		equal.setStyle(
 				" -fx-background-color: linear-gradient(#1E90FF  , #1E90FF);-fx-background-radius: 30;-fx-text-fill: black;-fx-font-weight: bold;");
-
-		HBox firstHBox = new HBox(10);// Hbox for *,/and+
+		Button clear=new Button("C");
+        clear.setMinSize(90, 60);
+        clear.setStyle(" -fx-background-color: linear-gradient(#1E90FF  , #1E90FF);-fx-background-radius: 30;-fx-text-fill: black;-fx-font-weight: bold;");
+		clear.setOnAction(new EventHandler<ActionEvent>() {@Override
+		public void handle(ActionEvent event) {
+			// TODO Auto-generated method stub
+			text.clear();
+		}
+		});
+        HBox firstHBox = new HBox(10);// Hbox for *,/and+
 		HBox secondBox = new HBox(10);// hbox for 7,8 and 9
 		HBox thirdHBox = new HBox(10);// Hbox for 4,5and 6
 		HBox fourthHBox = new HBox(10);// hbox for 1,2 and3
@@ -110,13 +118,16 @@ public class Calculator extends Application {
 		fourthHBox.getChildren().addAll(num1, num2, num3);
 		fifthHBox.getChildren().addAll(sub, num0, equal);
 		VBox genericVBox = new VBox(10);
-		genericVBox.getChildren().addAll(firstHBox, secondBox, thirdHBox, fourthHBox, fifthHBox);// vBoxto
+		genericVBox.getChildren().addAll(firstHBox, secondBox, thirdHBox, fourthHBox, fifthHBox );// vBoxto
 																									// create
 																									// Number
 																									// plate
-		bPane.setCenter(genericVBox);
+	     bPane.setCenter(genericVBox);
+		bPane.setBottom(clear);
+		clear.setTranslateX(100);
+		clear.setTranslateY(20);
 		bPane.setTop(text);
-		bPane.setPadding(new Insets(10, 10, 10, 10));
+		bPane.setPadding(new Insets(10, 10, 1300, 10));
 		num1.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -243,7 +254,7 @@ public class Calculator extends Application {
 
 		});
 
-		Scene scene = new Scene(bPane, 310, 430);
+		Scene scene = new Scene(bPane, 310, 500);
 		stage.setTitle("calculator");
 		stage.setScene(scene);
 		stage.show();
