@@ -1,5 +1,7 @@
 
 public abstract class Team {
+	
+	
 	private String teamName;
 	private String teamType;// team type
 	private int teamId;
