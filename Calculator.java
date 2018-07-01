@@ -12,9 +12,12 @@ import javafx.stage.Stage;
 
 public class Calculator extends Application {
 	/*
-	 * this is simple calculator class
-	 *hi  ahmed
-	 */
+
+	 * this is simple calculator class    
+	 *yanal zayed
+	 *hi I am ahmed
+=======
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		launch(args);
