@@ -14,7 +14,7 @@ public class Calculator extends Application {
 	/*
 
 	 * this is simple calculator class    
-	 *yanal zayed
+	 *yanal  ahmed zayed
 	 
 =======
 	
